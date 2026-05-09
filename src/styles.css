@@ -29,8 +29,10 @@ select{
 textarea{
     width: 100%;
     resize: none;
-    height: 4rem;
+    height: calc(100% - 1.25rem);
     border-radius: .25rem;
+    outline: none;
+    font-family: calibri;
 }
 
 input, select{
@@ -63,4 +65,162 @@ input:read-only{
     background-color: #f4f6f9;
     color: #2c3e50;
 
+}
+
+.component{
+    width: 100%;
+}
+
+.comp-header{
+    padding: 1rem;
+}
+
+.comp-title{
+    font: bold 1.25rem 'Trebuchet MS';
+}
+
+.tools{
+    float: right;
+    margin: 0rem .5rem;
+}
+
+.crud{
+    width: 10rem;
+    height: 2.5rem;
+    margin: .5rem .25rem;
+    cursor: pointer;
+
+    border: none;
+    border-radius: .5rem;
+    border-top: 5px solid #2980b9;
+    background-color: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+    transition: all 0.3s ease;
+    opacity: .75;
+
+    font: bold .9rem 'Trebuchet MS';
+}
+
+.crud:hover{
+    opacity: 1;
+}
+
+.container{
+    display: inline-block;
+    width: 100%;
+}
+
+.dataGrid{
+    display: inline-block;
+    width: 100%;
+    border-collapse: collapse;
+    padding: 1rem;
+    font: normal .9rem 'Calibri';
+    user-select: none;
+
+    & th, td{
+        text-align: left;
+        padding: .25rem;
+        border: none;
+        border-bottom: 1px solid gray;
+        
+    }
+
+    & tbody tr:nth-child(odd){
+        background-color: lightgray;
+    }
+}
+
+.selected{
+    background-color: #2980b9 !important;
+    color: white !important;
+}
+
+.input-group{
+    padding: .5rem;
+    height: 100%;
+}
+
+.subTools{
+    position: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form, .subForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.subContainer{
+    position: relative;
+    height: calc(100% - 1rem);
+    border-radius: .5rem;
+    background-color: rgba(235, 235, 235, 1);
+}
+
+.subTools{
+    border-top: 1px solid whitesmoke;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.subCrud{
+    width: 6rem;
+    height: 1.75rem;
+    margin: .5rem;
+    cursor: pointer;
+
+    border: none;
+    border-radius: .35rem;
+    border-top: 3.5px solid #2980b9;
+    background-color: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+    font: bold .8rem 'Trebuchet MS';
+}
+
+input[type=checkbox]{
+    height: 1.5rem;
+    width: 100% ;
+}
+
+.search{
+    width: 25rem;
+    margin: 0rem .5rem;
+}
+
+.search-box{
+    display: flex;
+    width: 30rem;
+}
+
+.btn-search{
+    width: 10rem;
+    height: 2.5rem;
+    margin: .5rem .25rem;
+    cursor: pointer;
+
+    border: none;
+    border-radius: .5rem;
+    border-top: 5px solid #2980b9;
+    background-color: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+    transition: all 0.3s ease;
+    opacity: .75;
+
+    font: bold .9rem 'Trebuchet MS';
+}
+
+input:disabled, select:disabled, textarea:disabled{
+    background-color: whitesmoke;
+    color: var(--corCinza);
+    opacity: 1;
 }

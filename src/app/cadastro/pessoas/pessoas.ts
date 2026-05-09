@@ -88,6 +88,7 @@ export class Pessoas {
       type: "textarea",
       field: "HISTORICO",
       width: 75,
+      height: 4,
       required: false
     }
   ]

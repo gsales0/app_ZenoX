@@ -107,7 +107,7 @@
         <form #ngdataForm="ngForm">
             <div class="form-group" *ngFor="let i of dataForm">
 
-                <div class="input-group" [ngSwitch]="i.type" [style.width.rem]="i.width">
+                <div class="input-group" [ngSwitch]="i.type" [style.width.rem]="i.width" [style.height.rem]="i.height">
 
                     <label [for]="i.field">
                         {{ i.label }}
@@ -135,6 +135,17 @@
                         >
                     </ng-container>
 
+                    <ng-container *ngSwitchCase="'date'">
+                        <input
+                        type="date"
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                    </ng-container>
+
                     <ng-container *ngSwitchCase="'lookup'">
                         <select
                         [name]="i.field"
@@ -144,7 +155,7 @@
                         [required]="i.required"
                         >
                             <option value="" hidden></option>
-                            <option *ngFor="let x of dataLookups[i.table]" [value]="x.ID">
+                            <option *ngFor="let x of dataLookups[i.table || '']" [value]="x.ID">
                                 {{x.DS}}
                             </option>
                         </select>
@@ -185,7 +196,17 @@
                         [required]="i.required"
                         ></textarea>
                     </ng-container>
-                
+
+                    <ng-container *ngSwitchCase="'subComponent'" >
+                        <app-subengine
+                        [table]="i.field"
+                        [dataSub]="dataSub[i.field]"
+                        [subForm]="subComponent[i.field].subForm"
+                        [subColumns]="subComponent[i.field].subColumns"
+                        >
+                    
+                        </app-subengine>
+                    </ng-container>
                 </div>
             </div>
         </form>

@@ -1,0 +1,101 @@
+<div class="subContainer" *ngIf="!subScreen">
+    <table class="dataGrid">
+        <thead>
+            <tr>
+                <th *ngFor="let i of subColumns" [style.width.rem]="i.width">
+                    {{i.name}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+            *ngFor="let i of subGrid" id="i.ID"
+            (click)="dataSub.ID = i.ID"
+            [ngClass]="{'selected' : dataSub.ID === i.ID}"
+            >
+                <td *ngFor="let c of subColumns">
+                    {{i[c.field]}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subTools">
+        <button
+        class="subCrud"
+        (click)="btnIncluir()"
+        >
+            Incluir
+        </button>
+
+        <button
+        class="subCrud"
+        (click)="btnAlterar()"
+        [disabled]="!dataSub.ID"
+        >
+            Alterar
+        </button>
+
+        <button
+        class="subCrud"
+        (click)="btnExcluir()"
+        [disabled]="!dataSub.ID"
+        >
+            Excluir
+        </button>
+    </div>
+</div>
+
+<div class="subContainer" *ngIf="subScreen">
+    <div class="subForm">
+        <div
+        class="input-group"
+        *ngFor="let i of subForm"
+        [ngSwitch]="i.type"
+        [style.width.rem]="i.width"
+        >
+            <label for="s.field">
+                {{ i.label }}
+            </label>
+
+            <ng-container *ngSwitchCase="'date'">
+                <input
+                type="date"
+                [name]="i.field"
+                [id]="i.field"
+                [(ngModel)]="dataSub[i.field]"
+                [disabled]="subConsult"
+                [required]="i.required"
+                >
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'number'">
+                <input
+                type="number"
+                [name]="i.field"
+                [id]="i.field"
+                [(ngModel)]="dataSub[i.field]"
+                [disabled]="subConsult"
+                [required]="i.required"
+                >
+            </ng-container>
+
+        </div>
+    </div>
+    
+    <div class="subTools">
+        <button
+        class="subCrud"
+        (click)="subUpdate ? btnAlteracao() : btnSalvar()"
+        >
+            {{ subUpdate ? "Alterar" : "Salvar" }}
+        </button>
+
+        <button
+        class="subCrud"
+        (click)="btnCancelar()"
+        >
+            Cancelar
+        </button>
+    </div>
+</div>

@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EngineService } from '../../services/engine-service';
+import { columnsGrid, dataForm} from './interfaces'
+import { Subengine } from '../subengine/subengine';
 
 @Component({
   selector: 'app-engine',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Subengine],
   templateUrl: './engine.html',
   styleUrl: './engine.css',
 })
@@ -16,9 +18,11 @@ export class Engine implements OnInit {
   @Input() table: string = ''
 
   @Input() dataRow: any = {}
+  @Input() dataSub: any = {}
 
-  @Input() columnsGrid: any[] = []
-  @Input() dataForm: any[] = []
+  @Input() columnsGrid: columnsGrid[] = []
+  @Input() dataForm: dataForm[] = []
+  @Input() subComponent: any = {}
 
   dataError: string = ''
   dataGrid: any[] = []
@@ -47,9 +51,9 @@ export class Engine implements OnInit {
   }
 
   async btnIncluir(){
-    let data = await this.service.codigo(this.table)
+    //let data = await this.service.codigo(this.table)
 
-    this.dataRow = { ...this.dataClean, ...data }
+    //this.dataRow = { ...this.dataClean, ...data }
 
     this.dataConsult = false
     this.dataScreen = true
