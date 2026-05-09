@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    --corPrincipal: #2980b9;
+    --corBranca: #fafbfc;
+    --corCinza: #2c3e50;
+    --corFundo: #f4f6f9;
+    background-color: var(--corFundo);
+}
+
+.input-group{
+    margin: .25rem 0rem;
+}
+
+label{
+    display: inline-block;
+    width: 100%;
+    font-family: 'Trebuchet MS';
+    font-size: .9rem;
+}
+
+input{
+    width: calc(100% - 1.5rem);
+}
+
+select{
+    width: calc(100% - .9rem);
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+    height: 4rem;
+    border-radius: .25rem;
+}
+
+input, select{
+    padding: .35rem;
+    outline: none;
+    border: 1px solid #2c3e50;
+    border-radius: .25rem;
+}
+
+input:focus, select:focus{
+    border: 1px solid #3498db;
+    box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.15);
+}
+
+button[type="submit"] {
+    float: right;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: .5rem;
+    font-size: .9rem;
+    font-weight: bold;
+    border-radius: .5rem;
+    cursor: pointer;
+    margin: 1rem;
+    width: 8rem;
+}
+
+input:read-only{
+    background-color: #f4f6f9;
+    color: #2c3e50;
+
+}

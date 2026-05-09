@@ -1,0 +1,57 @@
+.login-componente{
+    display: flex;
+
+    width: 100vw;
+    height: 100vh;
+    margin: -.5rem;
+
+    background-color: var(--corFundo);
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box{
+    width: 45rem;
+    height: 25rem;
+    
+    border-radius: 1rem;
+    background-color: white;
+    border-top: 5px solid #3498db;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.img-box{
+    float: left;
+    margin: 4rem 2rem;
+}
+
+.login-img{
+    width: 15rem;
+    height: 15rem;
+}
+
+.login-title{
+    display: inline-block;
+    width: 26rem;
+    margin: 1rem 0rem 0rem;
+
+    text-align: center;
+    font-size: 1.75rem;
+    font-family: 'Trebuchet MS';
+}
+
+.right-box{
+    float: right;
+    width: 26rem;
+}
+
+.login-slogan{
+    display: inline-block;
+    width: 26rem;
+    margin: 0rem 0rem 1rem;
+
+    text-align: center;
+    font-size: .9rem;
+    font-family: 'Trebuchet MS';
+    font-style: italic;
+}

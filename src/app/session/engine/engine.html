@@ -1,0 +1,193 @@
+<section class="component">
+    <div class="comp-header">
+        <span class="comp-title">
+            {{ compTitle }}
+        </span>
+    </div>
+
+    <div class="tools" *ngIf="!dataScreen || dataConsult">
+        <button
+        class="crud"
+        (click)="btnIncluir()"
+        >
+            Incluir
+        </button>
+        
+        <button
+        class="crud"
+        (click)="btnAlterar()"
+        [disabled]="!dataRow[dataKey]"
+        >
+            Alterar
+        </button>
+
+        <button
+        class="crud"
+        (click)="btnExcluir()"
+        [disabled]="!dataRow[dataKey]"
+        >
+            Excluir
+        </button>
+
+        <button
+        class="crud"
+        (click)="dataConsult ? btnCancelar() : btnConsultar()"
+        [disabled]="!dataRow[dataKey]"
+        >
+            {{ dataConsult ? "Voltar" : "Consultar"}}
+        </button>
+    </div>
+
+    <div class="tools" *ngIf="dataScreen && !dataConsult">
+        <button
+        class="crud"
+        (click)="btnSalvar()"
+        [disabled]="ngdataForm?.invalid"
+
+        >
+            {{ dataUpdate ? "Alterar" : "Salvar"}}
+        </button>
+
+        <button
+        class="crud"
+        (click)="btnCancelar()"
+        >
+            Cancelar
+        </button>
+    </div>
+
+    <div class="search-box" *ngIf="!dataScreen">
+
+        <div class="search">
+            <label for="DS_PESQUISA">
+                Pesquisa:
+            </label>
+            
+            <input
+            type="text"
+            name="DS_PESQUISA"
+            id="DS_PESQUISA"
+            [(ngModel)]="dataSearch.DS_PESQUISA"
+            >
+        </div>
+
+        <button
+        class="crud"
+        (click)="btnBuscar()"
+        >
+            Buscar
+        </button>
+    </div>
+
+    <div class="container" *ngIf="!dataScreen">
+
+        <table class="dataGrid">
+            <thead>
+                <tr>
+                    <th *ngFor="let i of columnsGrid" [style.width.rem]="i.width">
+                        {{i.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                *ngFor="let item of dataGrid" id="item[dataKey]"
+                (click)="dataRow[dataKey] = item[dataKey]"
+                [ngClass]="{'selected' : dataRow[dataKey] === item[dataKey]}"
+                >
+                    <td *ngFor="let i of columnsGrid">
+                        {{item[i.field]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container" *ngIf="dataScreen">
+        <form #ngdataForm="ngForm">
+            <div class="form-group" *ngFor="let i of dataForm">
+
+                <div class="input-group" [ngSwitch]="i.type" [style.width.rem]="i.width">
+
+                    <label [for]="i.field">
+                        {{ i.label }}
+                    </label>
+                    
+                    <ng-container *ngSwitchCase="'text'">
+                        <input
+                        type="text"
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'number'">
+                        <input
+                        type="number"
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'lookup'">
+                        <select
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                            <option value="" hidden></option>
+                            <option *ngFor="let x of dataLookups[i.table]" [value]="x.ID">
+                                {{x.DS}}
+                            </option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'select'">
+                        <select
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                            <option value="" hidden></option>
+                            <option *ngFor="let x of i.options" [value]="x.ID">
+                                {{x.DS}}
+                            </option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'checkbox'">
+                        <input
+                        type="checkbox"
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        >
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'textarea'">
+                        <textarea
+                        [name]="i.field"
+                        [id]="i.field"
+                        [(ngModel)]="dataRow[i.field]"
+                        [disabled]="dataConsult"
+                        [required]="i.required"
+                        ></textarea>
+                    </ng-container>
+                
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

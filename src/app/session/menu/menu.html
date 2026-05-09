@@ -1,0 +1,46 @@
+<section class="menu-component">
+    <div class="menu-header">
+
+        <img src="globe.svg" alt="logo.svg" class="menu-logo">
+
+        <span class="menu-title">
+            Zeno-X - ERP
+        </span>
+
+    </div>
+
+    <div class="menu-links">
+        
+        <ul class="link-list">
+            <li>
+                <a routerLink="./dashboard" skipLocationChange>
+                    <img class="img-link" src="home.svg" alt="icon">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a routerLink="./engine" skipLocationChange>
+                    <img class="img-link" src="home.svg" alt="icon">
+                    Pessoas
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="router-component">
+    <div class="router-header">
+        <div class="router-info">
+            <span class="nm_entidade">
+                {{ NM_ENTIDADE }}
+            </span>
+            
+            <br>
+
+            <span class="nm_usuario">
+                Usuário: {{ NM_USUARIO }} | Exercício: {{ ID_ANO }}
+            </span>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</section>

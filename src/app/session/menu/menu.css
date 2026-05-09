@@ -1,0 +1,82 @@
+.menu-component{
+    float: left;
+    width: 20vw;
+    height: 100vh;
+    margin: -.5rem;
+    overflow: hidden;
+    border-right: 1px solid #2c3e50;
+}
+
+.menu-header{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.menu-logo{
+    width: 3rem;
+    height: 3rem;
+    margin: 1.5rem;
+}
+
+.menu-title{
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.link-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.img-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+.link-list li a {
+    display: flex;
+    align-items: center;
+    padding: .75rem;
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
+    transition: all 0.2s ease;
+    
+}
+
+.link-list li a:hover{
+    background-color: #d3c1af;
+    color: black;
+    filter: invert(1);
+}
+
+.router-component{
+    width: 80vw;
+    height: 100vh;
+    margin: -.5rem;
+    float: right;
+    position: relative;
+}
+
+.router-header{
+    display: flex;
+    padding: .75rem;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.nm_entidade{
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+
+.nm_usuario{
+    font-family: 'Calibri';
+    font-size: .9rem;
+}
