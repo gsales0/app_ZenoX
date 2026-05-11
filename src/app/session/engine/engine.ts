@@ -129,16 +129,9 @@ export class Engine implements OnInit {
 
   async lookup(table: string){
     let data = await this.service.lookup(table)
-
     this.dataLookups[table] = data
-
-    console.log(this.dataLookups)
-    this.cdr.detectChanges()
-  }
-
-  syncSubGrid(data: any){
-    this.subGrids[data.table] = data.subGrid
     console.log(this.subGrids)
+    this.cdr.detectChanges()
   }
 
 }

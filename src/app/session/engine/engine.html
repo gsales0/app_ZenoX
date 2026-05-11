@@ -203,8 +203,8 @@
                         [table]="i.field"
                         [dataSub]="dataSub[i.field]"
                         [subForm]="subComponent[i.field].subForm"
-                        [subColumns]="subComponent[i.field].subColumns"
-                        (syncSubGrid)="syncSubGrid($event)"
+                        [subColumns]="subComponent[i.field].subColumns"                        
+                        [(subGrid)]="subGrids[i.field]"
                         >
                     
                         </app-subengine>

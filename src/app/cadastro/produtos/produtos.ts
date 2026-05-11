@@ -16,13 +16,13 @@ export class Produtos {
     TP_PRODUTO: '',
     CD_BARRAS: '',
     UN_MEDIDA: '',
-    ID_FORNECEDOR: null,
+    ID_PESSOA: null,
     NM_MARCA: ''
   }
 
   dataSub: any = {
     "PRODUTO_ESTOQUE": {
-      ID: 0,
+      ID_PRODUTO_ESTOQUE: 0,
       ID_PRODUTO: 0,
       DT_INICIO: '',
       MIN_ESTOQUE: '',

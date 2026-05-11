@@ -17,9 +17,8 @@ export class Subengine implements OnInit{
   @Input() subForm: dataForm[] = []
   @Input() subColumns: columnsGrid[] = [] 
 
-  @Output() syncSubGrid = new EventEmitter<any>
-
-  subGrid: any[] = []
+  @Input() subGrid: any[] = []
+  @Output() subGridChange = new EventEmitter<any[]>()
 
   subScreen: boolean = false
   subConsult: boolean = false
@@ -61,20 +60,14 @@ export class Subengine implements OnInit{
       this.subGrid[i].ID = i + 1
     }
 
-    this.syncSubGrid.emit({
-      table: this.table,
-      subGrid: this.subGrid
-    })
+    this.subGridChange.emit(this.subGrid)
     this.cdr.detectChanges()
   }
 
   btnSalvar(){
-    this.dataSub.ID = this.subGrid.length + 1
-    this.subGrid = [ ...this.subGrid, ...[this.dataSub] ]
-    this.syncSubGrid.emit({
-      table: this.table,
-      subGrid: this.subGrid
-    })
+    this.dataSub.ID = this.subGrid ? this.subGrid.length  + 1 : 1
+    this.subGrid = this.subGrid ? [ ...this.subGrid, ...[this.dataSub] ] : [this.dataSub]
+    this.subGridChange.emit(this.subGrid)
     this.btnCancelar()
   }
 
@@ -82,10 +75,7 @@ export class Subengine implements OnInit{
     let index = this.subGrid.findIndex(i => i.ID == this.dataSub.ID)
 
     this.subGrid[index] = this.dataSub
-    this.syncSubGrid.emit({
-      table: this.table,
-      subGrid: this.subGrid
-    })
+    this.subGridChange.emit(this.subGrid)
     this.btnCancelar()
   }
 }
