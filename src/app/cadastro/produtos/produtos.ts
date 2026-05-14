@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { columnsGrid, dataForm } from '../../session/engine/interfaces';
+import { columnsGrid, dataForm, dataRow, dataSub } from '../../session/engine/interfaces';
 import { Engine } from '../../session/engine/engine';
 
 @Component({
@@ -9,7 +9,7 @@ import { Engine } from '../../session/engine/engine';
   styleUrl: './produtos.css',
 })
 export class Produtos {
-  dataRow: any = {
+  dataRow: dataRow = {
     ID_PRODUTO: 0,
     CD_PRODUTO: '',
     NM_PRODUTO: '',
@@ -20,7 +20,7 @@ export class Produtos {
     NM_MARCA: ''
   }
 
-  dataSub: any = {
+  dataSub: dataSub = {
     "PRODUTO_ESTOQUE": {
       ID_PRODUTO: 0,
       DT_INICIO: '',
@@ -84,7 +84,6 @@ export class Produtos {
       type: "text",
       field: "CD_BARRAS",
       width: 16,
-      required: false
     },
     {
       label: "Un. Medida",
@@ -98,7 +97,6 @@ export class Produtos {
       type: "lookup",
       field: "ID_PESSOA",
       width: 32,
-      required: false,
       lookup: {table: 'PESSOAS', ID: 'ID_PESSOA', DS: ['CD_PESSOA', 'NM_PESSOA','CADASTRO']}
     },
     {
@@ -106,7 +104,6 @@ export class Produtos {
       type: "text",
       field: "NM_MARCA",
       width: 16,
-      required: false
     },
     {
       label: "Controle de Estoque",
@@ -114,7 +111,6 @@ export class Produtos {
       field: "PRODUTO_ESTOQUE",
       width: 35,
       height: 15,
-      required: false,
     },
     {
       label: "Histórico",
@@ -122,7 +118,6 @@ export class Produtos {
       field: "HISTORICO",
       width: 35,
       height: 15,
-      required: false
     }
   ]
 

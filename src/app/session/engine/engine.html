@@ -135,7 +135,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         >
                     </ng-container>
 
@@ -146,7 +146,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         >
                     </ng-container>
 
@@ -157,7 +157,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         >
                     </ng-container>
 
@@ -167,7 +167,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         (focus)="lookup(i.lookup)"
                         >
                             <option value="" hidden></option>
@@ -183,7 +183,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         >
                             <option value="" hidden></option>
                             <option *ngFor="let x of i.options" [value]="x.ID">
@@ -199,7 +199,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         >
                     </ng-container>
 
@@ -209,7 +209,7 @@
                         [id]="i.field"
                         [(ngModel)]="dataRow[i.field]"
                         [disabled]="dataConsult"
-                        [required]="i.required"
+                        [required]="i.required||false"
                         ></textarea>
                     </ng-container>
 

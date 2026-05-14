@@ -32,7 +32,9 @@ export class Pessoas {
     {
       name: "Tipo",
       field: "TP_PESSOA",
-      width: 16
+      width: 16,
+      type: 'select',
+      options: {"F": "Física", "J": "Jurídica"}
     },
     {
       name: "CPF/CNPJ",
@@ -83,7 +85,6 @@ export class Pessoas {
       type: "checkbox",
       field: "SN_ATIVO",
       width: 2,
-      required: false
     },
     {
       label: "Histórico",
@@ -91,7 +92,6 @@ export class Pessoas {
       field: "HISTORICO",
       width: 75,
       height: 4,
-      required: false
     }
   ]
 }

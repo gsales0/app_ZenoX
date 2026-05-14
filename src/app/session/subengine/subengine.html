@@ -73,7 +73,7 @@
                 [id]="i.field"
                 [(ngModel)]="dataSub[i.field]"
                 [disabled]="subConsult"
-                [required]="i.required"
+                [required]="i.required||false"
                 >
             </ng-container>
 
@@ -84,7 +84,7 @@
                 [id]="i.field"
                 [(ngModel)]="dataSub[i.field]"
                 [disabled]="subConsult"
-                [required]="i.required"
+                [required]="i.required||false"
                 >
             </ng-container>
 
