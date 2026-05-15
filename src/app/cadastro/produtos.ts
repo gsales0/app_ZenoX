@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
-import { columnsGrid, dataForm, dataRow, dataSub } from '../../session/engine/interfaces';
-import { Engine } from '../../session/engine/engine';
+import { columnsGrid, dataForm, dataRow, dataSub } from '../session/engine/interfaces';
+import { Engine } from '../session/engine/engine';
 
 @Component({
   selector: 'app-produtos',
   imports: [Engine],
-  templateUrl: './produtos.html',
-  styleUrl: './produtos.css',
+  template: `
+  <app-engine
+    compTitle="Cadastro de Produtos"
+    dataKey="ID_PRODUTO"
+    table="PRODUTOS"
+    
+    [dataRow]="dataRow"
+    [dataSub]="dataSub"
+    [columnsGrid]="columnsGrid"
+    [dataForm]="dataForm"
+    [subComponent]="subComponent"
+
+></app-engine>`,
+  styles: '',
 })
 export class Produtos {
   dataRow: dataRow = {

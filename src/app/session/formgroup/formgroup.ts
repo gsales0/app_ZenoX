@@ -10,15 +10,14 @@ import { NgxMaskDirective } from 'ngx-mask';
   styleUrl: './formgroup.css',
 })
 export class Formgroup {
-  @Input() i: any; // A configuração da coluna (o seu c.type, c.field, etc)
-  @Input() dataRow: any; // O objeto inteiro da linha sendo editada
-  @Input() dataConsult: boolean = false; // Flag para bloquear os campos
-  @Input() dataLookups: any = {}; // Os dados de lookup para preencher os selects
-
-  // SAÍDAS: O que o componente avisa para o Pai
+  
+  @Input() i: any
+  @Input() dataRow: any
+  @Input() dataConsult: boolean = false
+  @Input() dataLookups: any = {}
+  
   @Output() onLookupFocus = new EventEmitter<any>();
 
-  // Função para disparar o evento de lookup
   lookup() {
     if (this.i.lookup) {
         this.onLookupFocus.emit(this.i.lookup);

@@ -36,3 +36,9 @@ export interface subComponent {
         subForm: dataForm[]
     }
 }
+
+export interface abaForm {
+    label: string,
+    id: string,
+    abaForm: dataForm[]
+}

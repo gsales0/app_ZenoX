@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
-import { Engine } from '../../session/engine/engine';
+import { Engine } from '../session/engine/engine';
 
 @Component({
   selector: 'app-pessoas',
   imports: [Engine],
-  templateUrl: './pessoas.html',
-  styleUrl: './pessoas.css',
+  template: `
+    <app-engine
+      compTitle="Cadastro de Pessoas"
+      dataKey="ID_PESSOA"
+      table="PESSOAS"
+      
+      [dataRow]="dataRow"
+      [columnsGrid]="columnsGrid"
+      [dataForm]="dataForm"
+    ></app-engine>`,
+  styles: '',
 })
 export class Pessoas {
 

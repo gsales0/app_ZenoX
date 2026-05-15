@@ -51,6 +51,11 @@ export class Contratos {
       type: "date"
     },
     {
+      name: "Nº Contrato",
+      field: "CD_CONTRATO",
+      width: 12,
+    },
+    {
       name: "Credor",
       field: "ID_PESSOA",
       width: 24,
@@ -70,6 +75,7 @@ export class Contratos {
       options: {"E": "Executado", "A": "Andamento", "R": "Rescindido"}
     }
   ]
+
   dataForm: dataForm[] = [
     {
       label: "Nº Contrato",
@@ -137,6 +143,7 @@ export class Contratos {
       height: 15
     }
   ]
+
   subComponent: subComponent = {
     "CONTRATO_ADITIVO": {
       subColumns: [

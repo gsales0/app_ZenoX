@@ -47,7 +47,7 @@
         [disabled]="dataConsult"
         [required]="i.required||false"
         (focus)="lookup()"
-        [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
+        [ngClass]="{'required': i.required && dataRow[i.field] == ''}"
         >
             <option value="" hidden></option>
             <option *ngFor="let x of dataLookups[i.lookup?.table || '']" [value]="x.ID">
