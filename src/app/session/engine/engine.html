@@ -97,6 +97,10 @@
                 >
                     <td *ngFor="let c of columnsGrid" [ngSwitch]="c.type">
 
+                        <ng-container *ngSwitchCase="'lookup'">
+                            {{ gridLookup(item[c.field], c.table || '') }}
+                        </ng-container>
+
                         <ng-container *ngSwitchCase="'select'">
                             {{ c.options?.[item[c.field]] }}
                         </ng-container>
@@ -126,92 +130,16 @@
 
                     <label [for]="i.field">
                         {{ i.label }}
+                        <span *ngIf="i.required" [style.color]="'red'">*</span>
                     </label>
                     
-                    <ng-container *ngSwitchCase="'text'">
-                        <input
-                        type="text"
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        >
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'number'">
-                        <input
-                        type="number"
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        >
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'date'">
-                        <input
-                        type="date"
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        >
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'lookup'">
-                        <select
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        (focus)="lookup(i.lookup)"
-                        >
-                            <option value="" hidden></option>
-                            <option *ngFor="let x of dataLookups[i.lookup?.table || '']" [value]="x.ID">
-                                {{x.DS}}
-                            </option>
-                        </select>
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'select'">
-                        <select
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        >
-                            <option value="" hidden></option>
-                            <option *ngFor="let x of i.options" [value]="x.ID">
-                                {{x.DS}}
-                            </option>
-                        </select>
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'checkbox'">
-                        <input
-                        type="checkbox"
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        >
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'textarea'">
-                        <textarea
-                        [name]="i.field"
-                        [id]="i.field"
-                        [(ngModel)]="dataRow[i.field]"
-                        [disabled]="dataConsult"
-                        [required]="i.required||false"
-                        ></textarea>
-                    </ng-container>
+                    <app-formgroup
+                    [i]="i" 
+                    [dataRow]="dataRow" 
+                    [dataConsult]="dataConsult"
+                    [dataLookups]="dataLookups"
+                    (onLookupFocus)="lookup($event)">
+                    ></app-formgroup>
 
                     <ng-container *ngSwitchCase="'subComponent'" >
                         <app-subengine

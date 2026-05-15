@@ -224,3 +224,7 @@ input:disabled, select:disabled, textarea:disabled{
     color: var(--corCinza);
     opacity: 1;
 }
+
+.required{
+    border-color: red;
+}

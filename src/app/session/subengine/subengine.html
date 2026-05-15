@@ -62,31 +62,17 @@
         [ngSwitch]="i.type"
         [style.width.rem]="i.width"
         >
-            <label for="s.field">
+            <label for="i.field">
                 {{ i.label }}
             </label>
 
-            <ng-container *ngSwitchCase="'date'">
-                <input
-                type="date"
-                [name]="i.field"
-                [id]="i.field"
-                [(ngModel)]="dataSub[i.field]"
-                [disabled]="subConsult"
-                [required]="i.required||false"
-                >
-            </ng-container>
-
-            <ng-container *ngSwitchCase="'number'">
-                <input
-                type="number"
-                [name]="i.field"
-                [id]="i.field"
-                [(ngModel)]="dataSub[i.field]"
-                [disabled]="subConsult"
-                [required]="i.required||false"
-                >
-            </ng-container>
+            <app-formgroup
+            [i]="i" 
+            [dataRow]="dataSub" 
+            [dataConsult]="subConsult"
+            [dataLookups]="subLookups"
+            (onLookupFocus)="lookup($event)">
+            ></app-formgroup>
 
         </div>
     </div>

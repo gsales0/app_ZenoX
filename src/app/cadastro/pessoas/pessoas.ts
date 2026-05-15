@@ -13,6 +13,7 @@ export class Pessoas {
     ID_PESSOA: 0,
     CD_PESSOA: '',
     NM_PESSOA: '',
+    CADASTRO: '',
     TP_PESSOA: '',
     SN_ATIVO: true,
     HISTORICO: ''
@@ -78,7 +79,8 @@ export class Pessoas {
       type: "text",
       field: "CADASTRO",
       width: 16,
-      required: true
+      required: true,
+      mask: '000.000.000-00||00.000.000/0000-00'
     },
     {
       label: "Ativo",

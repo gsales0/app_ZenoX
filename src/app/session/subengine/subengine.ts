@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { columnsGrid, dataForm } from '../engine/interfaces';
+import { EngineService } from '../../services/engine-service';
+import { Formgroup } from '../formgroup/formgroup';
 
 @Component({
   selector: 'app-subengine',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Formgroup],
   templateUrl: './subengine.html',
   styleUrl: './subengine.css',
 })
@@ -20,12 +22,14 @@ export class Subengine implements OnInit{
   @Input() subGrid: any[] = []
   @Output() subGridChange = new EventEmitter<any[]>()
 
+  subLookups : any = { }
+
   subScreen: boolean = false
   @Input() subConsult: boolean = false
   subUpdate: boolean = false
   subClean: any = {}
 
-  constructor(private cdr: ChangeDetectorRef){ }
+  constructor(private cdr: ChangeDetectorRef, private service: EngineService){ }
 
   ngOnInit(): void {
     this.subClean = { ...this.dataSub }
@@ -78,5 +82,11 @@ export class Subengine implements OnInit{
     this.subGrid[index] = this.dataSub
     this.subGridChange.emit(this.subGrid)
     this.btnCancelar()
+  }
+
+  async lookup(lookup: any){
+    let data = await this.service.lookup(lookup)
+    this.subLookups[lookup.table] = data
+    this.cdr.detectChanges()
   }
 }

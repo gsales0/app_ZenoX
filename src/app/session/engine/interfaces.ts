@@ -11,13 +11,14 @@ export interface columnsGrid {
     field: string,
     width: number,
 
-    type?: "date"|"sn_ativo"|"select",
-    options?: {[ID: string]: string}
+    type?: "date"|"sn_ativo"|"select"|"lookup",
+    options?: {[ID: string]: string},
+    table?: string
 }
 
 export interface dataForm{
     label: string,
-    type: string,
+    type: "text"|"number"|"date"|"lookup"|"select"|"checkbox"|"textarea"|"subComponent",
     field: string,
     width: number,
 
@@ -26,6 +27,7 @@ export interface dataForm{
     options?: {ID: string, DS: string}[],
     lookup?: {table: string, ID: string, DS: string[]},
     autocomplete?: 'codigo'|'change',
+    mask?: string
 }
 
 export interface subComponent {

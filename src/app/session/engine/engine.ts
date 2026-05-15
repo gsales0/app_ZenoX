@@ -4,10 +4,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { EngineService } from '../../services/engine-service';
 import { columnsGrid, dataForm} from './interfaces'
 import { Subengine } from '../subengine/subengine';
+import { Formgroup } from '../formgroup/formgroup';
 
 @Component({
   selector: 'app-engine',
-  imports: [CommonModule, FormsModule, Subengine],
+  imports: [CommonModule, FormsModule, Subengine, Formgroup],
   templateUrl: './engine.html',
   styleUrl: './engine.css',
 })
@@ -165,6 +166,10 @@ export class Engine implements OnInit {
     let data = await this.service.lookup(lookup)
     this.dataLookups[lookup.table] = data
     this.cdr.detectChanges()
+  }
+
+  gridLookup(ID: number, table: string){
+    return this.dataLookups[table].find((i: any) => i.ID === ID).DS
   }
 
 }
