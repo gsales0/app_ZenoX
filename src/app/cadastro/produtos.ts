@@ -74,7 +74,7 @@ export class Produtos {
       field: "CD_PRODUTO",
       width: 8,
       required: true,
-      autocomplete: 'codigo'
+      autocomplete: {type: 'codigo'}
     },
     {
       label: "Nome",

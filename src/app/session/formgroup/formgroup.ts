@@ -16,11 +16,25 @@ export class Formgroup {
   @Input() dataConsult: boolean = false
   @Input() dataLookups: any = {}
   
-  @Output() onLookupFocus = new EventEmitter<any>();
+  @Output() onLookupFocus = new EventEmitter<any>()
+  @Output() onAutocomplete = new EventEmitter<any>()
 
   lookup() {
     if (this.i.lookup) {
         this.onLookupFocus.emit(this.i.lookup);
+    }
+  }
+
+  autocomplete(ID: any){
+    if(this.i.autocomplete.type == 'change' && ID){
+
+      let data = {
+        ID: ID,
+        table: this.i.lookup.table,
+        fill: this.i.autocomplete.fill
+      }
+
+      this.onAutocomplete.emit(data)
     }
   }
 }

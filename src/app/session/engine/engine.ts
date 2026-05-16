@@ -62,9 +62,13 @@ export class Engine implements OnInit {
     this.dataRow = { ...this.dataClean }
 
     for(let i of this.dataForm){
-      if(i.autocomplete == 'codigo'){
+      if(i.autocomplete?.type == 'codigo'){
         let data = await this.service.codigo(this.table, i.field)
         this.dataRow = { ...this.dataRow, ...data }
+      }
+
+      if(i.autocomplete?.type == 'today'){
+        this.dataRow[i.field] = new Date().toLocaleDateString('en-CA');
       }
     }
 
@@ -170,6 +174,12 @@ export class Engine implements OnInit {
 
   gridLookup(ID: number, table: string){
     return this.dataLookups[table].find((i: any) => i.ID === ID).DS
+  }
+
+  async autocomplete(load: any){
+    let data = await this.service.autocomplete(load)
+    this.dataRow = { ...this.dataRow, ...data }
+    this.cdr.detectChanges()
   }
 
 }

@@ -6,6 +6,8 @@ import { Pessoas } from './cadastro/pessoas';
 import { Produtos } from './cadastro/produtos';
 import { Contratos } from './cadastro/contratos';
 import { Financeiro } from './movimento/financeiro';
+import { Contas } from './cadastro/contas';
+import { Categorias } from './cadastro/categorias';
 
 export const routes: Routes = [
     {path: ':alias', component: Login},
@@ -14,6 +16,8 @@ export const routes: Routes = [
         {path: 'pessoas', component: Pessoas},
         {path: 'produtos', component: Produtos},
         {path: 'contratos', component: Contratos},
-        {path: 'financeiro', component: Financeiro}
+        {path: 'financeiro', component: Financeiro},
+        {path: 'contas', component: Contas},
+        {path: 'categorias', component: Categorias}
     ]}
 ];

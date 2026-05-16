@@ -7,7 +7,7 @@ import { Engine } from '../session/engine/engine';
   imports: [Engine],
   template: `
   <app-engine
-    compTitle="Cadastro de Contratos"
+    compTitle="Movimentação Financeira"
     dataKey="ID_CONTRATO"
     table="CONTRATOS"
     
@@ -23,10 +23,45 @@ import { Engine } from '../session/engine/engine';
 })
 export class Financeiro {
   
-  dataRow: dataRow = { }
+  dataRow: dataRow = {
+    ID_FINANCEIRO: 0,
+    TP_FINANCEIRO: '',
+    DS_FINANCEIRO: '',
+    VL_FINANCEIRO: '',
+    ID_CONTRATO: null,
+    ID_PESSOA: null,
+    ID_CONTA: null,
+    CD_METODO: ''
+  }
+
   dataSub: dataSub = { }
 
-  columnsGrid: columnsGrid[] = []
+  columnsGrid: columnsGrid[] = [
+    {
+      name: "Data",
+      field: "DT_FINANCEIRO",
+      width: 8,
+      type: 'date'
+    },
+    {
+      name: "Tipo",
+      field: "TP_FINANCEIRO",
+      width: 12,
+      options: {"D": "Despesa", "R": "Receita"}
+    },
+    {
+      name: "Credor / Fornecedor",
+      field: "ID_PESSOA",
+      width: 24,
+      type: "lookup",
+      table: "PESSOAS"
+    },
+    {
+      name: "Valor",
+      field: "VL_FINANCEIRO",
+      width: 8
+    }
+  ]
   dataForm: dataForm[] = [
     {
       label: "Data",
@@ -39,7 +74,7 @@ export class Financeiro {
       label: "Tipo",
       type: "select",
       field: "TP_FINANCEIRO",
-      width: 12,
+      width: 10,
       required: true,
 
       options: [{ID: "D", DS: "Despesa"}, {ID: "R", DS: "Receita"}]
@@ -48,21 +83,48 @@ export class Financeiro {
       label: "Descrição",
       type: "text",
       field: "DS_FINANCEIRO",
-      width: 24
+      width: 32,
+      required: true
     },
     {
       label: "Valor",
       type: "number",
       field: "VL_FINANCEIRO",
-      width: 8,
+      width: 12,
       required: true
+    },
+    {
+      label: "Contrato",
+      type: "lookup",
+      field: "ID_CONTRATO",
+      width: 19,
+      lookup: { "table": "CONTRATOS", ID: "ID_CONTRATO", DS: ["CD_CONTRATO","NM_PESSOA"], joins: ["PESSOAS"]},
+      autocomplete: {type: 'change', fill: ["ID_PESSOA"]}
+    },
+    {
+      label: "Credor / Fornecedor",
+      type: "lookup",
+      field: "ID_PESSOA",
+      width: 24,
+      lookup: { "table": "PESSOAS", ID: "ID_PESSOA", DS: ["CD_PESSOA", "NM_PESSOA", "CADASTRO"]},
+      required: true
+    },
+    {
+      label: "Conta Bancária",
+      type: "lookup",
+      field: "ID_CONTA",
+      width: 7,
+      lookup: { "table": "CONTAS", ID: "ID_CONTA", DS: ["CD_CONTA", "DG_CONTA"]}
     },
     {
       label: "Método",
       type: "select",
       field: "CD_METODO",
       width: 12,
-      options: [{ID: "D", DS: "Débito"}, {ID: "P", DS: "Pagamento"}],
+      options: [
+        {ID: "C", DS: "Crédito"}, {ID: "D", DS: "Débito"}, {ID: "G", DS: "Pagamento"},
+        {ID: "P", DS: "Pix"}, {ID: "T", DS: "Transferência"}
+      ],
       required: true
     }
   ]

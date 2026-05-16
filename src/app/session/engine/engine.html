@@ -138,7 +138,8 @@
                     [dataRow]="dataRow" 
                     [dataConsult]="dataConsult"
                     [dataLookups]="dataLookups"
-                    (onLookupFocus)="lookup($event)">
+                    (onLookupFocus)="lookup($event)"
+                    (onAutocomplete)="autocomplete($event)"
                     ></app-formgroup>
 
                     <ng-container *ngSwitchCase="'subComponent'" >
@@ -149,6 +150,7 @@
                         [subForm]="subComponent[i.field].subForm"
                         [subColumns]="subComponent[i.field].subColumns"                        
                         [(subGrid)]="subGrids[i.field]"
+                        [supKey]="dataKey"
                         >
                     
                         </app-subengine>

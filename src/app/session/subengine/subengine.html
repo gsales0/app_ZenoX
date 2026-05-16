@@ -19,6 +19,10 @@
                         {{ i[c.field] | date:'dd/MM/yyyy' }}
                     </ng-container>
 
+                    <ng-container *ngSwitchCase="'sn_ativo'">
+                            {{ i[c.field] == 1 ? "Sim" : "Não" }}
+                        </ng-container>
+
                     <ng-container *ngSwitchDefault>
                         {{i[c.field]}}
                     </ng-container>

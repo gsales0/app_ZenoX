@@ -121,4 +121,20 @@ export class EngineService {
 
     return data
   }
+
+  async autocomplete(autocomplete: any){
+
+    let req = await fetch(environment.api + 'change/' + autocomplete.table, {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+        x_session: this.session.X_SESSION
+      },
+      body: JSON.stringify(autocomplete)
+    })
+
+    let data = await req.json()
+
+    return data
+  }
 }

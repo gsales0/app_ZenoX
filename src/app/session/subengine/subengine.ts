@@ -15,6 +15,7 @@ export class Subengine implements OnInit{
 
   @Input() dataSub: any = {}
   @Input() table: string = ''
+  @Input() supKey: string = ''
   
   @Input() subForm: dataForm[] = []
   @Input() subColumns: columnsGrid[] = [] 
@@ -35,8 +36,18 @@ export class Subengine implements OnInit{
     this.subClean = { ...this.dataSub }
   }
 
-  btnIncluir(){
+  async btnIncluir(){
     this.dataSub = { ...this.subClean, ...{ ID: this.dataSub.ID }}
+
+    for(let i of this.subForm){
+      if(i.autocomplete?.type == 'codigo'){
+        this.dataSub[i.field] = this.subGrid ? Math.max(...this.subGrid.map((x: any) => Number(x[i.field])))  + 1 : 1
+      }
+
+      if(i.autocomplete?.type == 'today'){
+        this.dataSub[i.field] = new Date().toLocaleDateString('en-CA');
+      }
+    }
     this.subScreen = true
     this.cdr.detectChanges()
   }

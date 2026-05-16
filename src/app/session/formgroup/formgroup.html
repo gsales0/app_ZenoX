@@ -46,7 +46,10 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
+        
         (focus)="lookup()"
+        (ngModelChange)="autocomplete($event)"
+
         [ngClass]="{'required': i.required && dataRow[i.field] == ''}"
         >
             <option value="" hidden></option>
