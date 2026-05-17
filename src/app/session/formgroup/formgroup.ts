@@ -37,4 +37,28 @@ export class Formgroup {
       this.onAutocomplete.emit(data)
     }
   }
+
+  inputFile(event: any){
+    const reader = new FileReader()
+    let file = event.target.files[0]
+    if(!file) return
+
+    if(file.size > 1000000){
+      alert("O limite para arquivos é de 1MB")
+      event.target.value = ''
+      return
+    }
+
+    if(file.type !== 'application/pdf'){
+      alert("Apenas arquivos .PDF")
+      event.target.value = ''
+      return
+    }
+
+    reader.onload = () => {
+      this.dataRow[this.i.field] = reader.result as string
+    }
+
+    reader.readAsDataURL(file)
+  }
 }

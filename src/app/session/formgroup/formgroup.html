@@ -97,4 +97,19 @@
         ></textarea>
     </ng-container>
 
+    <ng-container *ngSwitchCase="'file'">
+        <input
+        type="file"
+        [name]="i.field"
+        [id]="i.field"
+        [disabled]="dataConsult"
+        [required]="i.required||false"
+        [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
+
+        accept="application/pdf"
+        (change)="inputFile($event)"
+    >
+        <span *ngIf="dataRow[i.field]" [style.color]="'green'">Arquivo Anexado.</span>
+    </ng-container>
+
 </ng-container>
