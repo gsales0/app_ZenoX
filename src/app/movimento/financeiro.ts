@@ -25,14 +25,16 @@ export class Financeiro {
   
   dataRow: dataRow = {
     ID_FINANCEIRO: 0,
+    DT_FINANCEIRO: '',
     TP_FINANCEIRO: '',
     DS_FINANCEIRO: '',
-    VL_FINANCEIRO: '',
     ID_CATEGORIA: '',
+    CD_STATUS: '',
     ID_CONTRATO: '',
     ID_PESSOA: '',
+    CD_METODO: '',
     ID_CONTA: '',
-    CD_METODO: ''
+    VL_FINANCEIRO: '',
   }
 
   dataSub: dataSub = {
@@ -169,6 +171,7 @@ export class Financeiro {
 
   subComponent: subComponent = {
     "FINANCEIRO_DOCUMENTOS": {
+      subKey: "ID_FINANCEIRO_DOCUMENTO",
       subColumns: [
         {
           name: "Data",

@@ -16,6 +16,7 @@ export class Subengine implements OnInit{
   @Input() dataSub: any = {}
   @Input() table: string = ''
   @Input() supKey: string = ''
+  @Input() subKey: string = ''
   
   @Input() subForm: dataForm[] = []
   @Input() subColumns: columnsGrid[] = [] 
@@ -66,6 +67,12 @@ export class Subengine implements OnInit{
     this.cdr.detectChanges()
   }
 
+  btnConsultar(){
+    this.dataSub = this.subGrid.find(i => i.ID == this.dataSub.ID)
+    this.subScreen = true
+    this.cdr.detectChanges()
+  }
+
   btnExcluir(){
     let index = this.subGrid.findIndex(i => i.ID == this.dataSub.ID)
     
@@ -99,5 +106,19 @@ export class Subengine implements OnInit{
     let data = await this.service.lookup(lookup)
     this.subLookups[lookup.table] = data
     this.cdr.detectChanges()
+  }
+
+  async consultFile(){
+    let data = await this.service.consultFile(this.table, this.dataSub[this.subKey])
+
+    const byteCharacters = atob(data.ANEXO.split(',')[1]);
+
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+
+    const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/pdf" });
+    window.open(URL.createObjectURL(blob), '_blank')
   }
 }

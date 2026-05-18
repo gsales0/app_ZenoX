@@ -194,4 +194,9 @@ export class Engine implements OnInit {
     this.cdr.detectChanges()
   }
 
+  async consultFile(){
+    let data = await this.service.consultFile(this.table, this.dataRow[this.dataKey])
+
+    console.log(data)
+  }
 }

@@ -140,6 +140,7 @@
                     [dataLookups]="dataLookups"
                     (onLookupFocus)="lookup($event)"
                     (onAutocomplete)="autocomplete($event)"
+                    (onConsultFile)="consultFile()"
                     ></app-formgroup>
 
                     <ng-container *ngSwitchCase="'subComponent'" >
@@ -151,6 +152,7 @@
                         [subColumns]="subComponent[i.field].subColumns"                        
                         [(subGrid)]="subGrids[i.field]"
                         [supKey]="dataKey"
+                        [subKey]="subComponent[i.field].subKey"
                         >
                     
                         </app-subengine>

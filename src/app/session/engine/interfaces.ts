@@ -32,6 +32,7 @@ export interface dataForm{
 
 export interface subComponent {
     [table: string]: {
+        subKey?: string
         subColumns: columnsGrid[],
         subForm: dataForm[]
     }

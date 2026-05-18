@@ -11,6 +11,7 @@
             <tr
             *ngFor="let i of subGrid" id="i.ID"
             (click)="dataSub.ID = i.ID"
+            (dblclick)="btnConsultar()"
             [ngClass]="{'selected' : dataSub.ID === i.ID}"
             >
                 <td *ngFor="let c of subColumns" [ngSwitch]="c.type">
@@ -75,7 +76,8 @@
             [dataRow]="dataSub" 
             [dataConsult]="subConsult"
             [dataLookups]="subLookups"
-            (onLookupFocus)="lookup($event)">
+            (onLookupFocus)="lookup($event)"
+            (onConsultFile)="consultFile()">
             ></app-formgroup>
 
         </div>
@@ -94,7 +96,7 @@
         class="subCrud"
         (click)="btnCancelar()"
         >
-            Cancelar
+            {{subConsult ? "Voltar" : "Cancelar"}}
         </button>
     </div>
 </div>

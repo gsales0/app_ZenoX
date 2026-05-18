@@ -137,4 +137,19 @@ export class EngineService {
 
     return data
   }
+
+  async consultFile(table: string, id: number){
+
+    let req = await fetch(environment.api + `files/${table}/${id}`,{
+      method: "GET",
+      headers: {
+        "Content-Type":"application/json",
+        x_session: this.session.X_SESSION
+      }
+    })
+
+    let data = await req.json()
+
+    return data
+  }
 }

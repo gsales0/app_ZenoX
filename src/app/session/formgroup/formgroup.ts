@@ -18,6 +18,7 @@ export class Formgroup {
   
   @Output() onLookupFocus = new EventEmitter<any>()
   @Output() onAutocomplete = new EventEmitter<any>()
+  @Output() onConsultFile = new EventEmitter<any>()
 
   lookup() {
     if (this.i.lookup) {
@@ -61,5 +62,9 @@ export class Formgroup {
     }
 
     reader.readAsDataURL(file)
+  }
+
+  consultFile(){
+    this.onConsultFile.emit()
   }
 }
