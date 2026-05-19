@@ -9,8 +9,21 @@
         [disabled]="dataConsult"
         [required]="i.required||false"
         [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
-        [mask]="i.mask || ''"
-        [dropSpecialCharacters]="true"
+
+        *ngIf="i.mask"
+        [mask]="i.mask"
+        [dropSpecialCharacters]="false"
+        >
+
+        <input
+        type="text"
+        [name]="i.field"
+        [id]="i.field"
+        [(ngModel)]="dataRow[i.field]"
+        [disabled]="dataConsult"
+        [required]="i.required||false"
+        [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
+        *ngIf="!i.mask"
         >
     </ng-container>
 
@@ -98,24 +111,28 @@
     </ng-container>
 
     <ng-container *ngSwitchCase="'file'" >
-        <input
-        type="file"
-        [name]="i.field"
-        [id]="i.field"
-        [disabled]="dataConsult"
-        [required]="i.required||false"
-        [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
 
-        class="input-file"
-        accept="application/pdf"
-        (change)="inputFile($event)">
+        <div class="input-file">
 
-        <button
-        *ngIf="dataRow['SN_ANEXO']"
-        (click)="consultFile()"
-        class="input-button">
-            Consultar
-        </button>
+            <input
+            type="file"
+            [name]="i.field"
+            [id]="i.field"
+            [disabled]="dataConsult"
+            [required]="i.required||false"
+            [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
+
+            class="input-file"
+            accept="application/pdf"
+            (change)="inputFile($event)">
+
+            <button
+            *ngIf="dataRow['SN_ANEXO']"
+            (click)="consultFile()"
+            class="input-button">
+                Consultar
+            </button>
+        </div>
 
         <span *ngIf="dataRow[i.field]" [style.color]="'green'">Arquivo Anexado.</span>
     </ng-container>

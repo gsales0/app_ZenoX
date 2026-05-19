@@ -214,7 +214,7 @@ export class Financeiro {
           label: "Anexo",
           type: "file",
           field: "ANEXO",
-          width: 32
+          width: 24
         }
       ]
     }
