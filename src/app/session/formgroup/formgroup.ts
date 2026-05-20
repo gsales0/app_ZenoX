@@ -67,4 +67,30 @@ export class Formgroup {
   consultFile(){
     this.onConsultFile.emit()
   }
+
+  inputImg(event: any){
+    const reader = new FileReader()
+    let file = event.target.files[0]
+    if(!file) return
+
+    if(file.size > 1000000){
+      alert("O limite para arquivos é de 1MB")
+      event.target.value = ''
+      return
+    }
+
+    if(!['image/png', 'image/jpeg', 'image/webp'].includes(file.type) ){
+      alert("Apenas arquivos de imagem")
+      event.target.value = ''
+      return
+    }
+
+    reader.onload = () => {
+      this.dataRow[this.i.field] = reader.result as string
+      this.dataRow['SN_ANEXO'] = true
+    }
+
+    reader.readAsDataURL(file)
+  }
+  
 }

@@ -197,6 +197,14 @@ export class Engine implements OnInit {
   async consultFile(){
     let data = await this.service.consultFile(this.table, this.dataRow[this.dataKey])
 
-    console.log(data)
+    const byteCharacters = atob(data.ANEXO.split(',')[1]);
+
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+
+    const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/pdf" });
+    window.open(URL.createObjectURL(blob), '_blank')
   }
 }

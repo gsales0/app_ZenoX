@@ -1,0 +1,41 @@
+<section class="component">
+    <div class="comp-header">
+        <span class="comp-title">
+            {{ compTitle }}
+        </span>
+    </div>
+
+    <div class="tools">
+        <button
+        class="crud"
+        >
+            Alterar
+        </button>
+    </div>
+
+    <div class="container">
+        <form #ngdataForm="ngForm" class="dataForm">
+            <div class="form-group" *ngFor="let i of dataForm">
+
+                <div class="input-group" [ngSwitch]="i.type" [style.width.rem]="i.width" [style.height.rem]="i.height">
+
+                    <label [for]="i.field">
+                        {{ i.label }}
+                        <span *ngIf="i.required" [style.color]="'red'">*</span>
+                    </label>
+                    
+                    <app-formgroup
+                    [i]="i" 
+                    [dataRow]="dataRow" 
+                    [dataConsult]="dataConsult"
+                    [dataLookups]="dataLookups"
+                    (onLookupFocus)="lookup($event)"
+                    (onAutocomplete)="autocomplete($event)"
+                    (onConsultFile)="consultFile()"
+                    ></app-formgroup>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

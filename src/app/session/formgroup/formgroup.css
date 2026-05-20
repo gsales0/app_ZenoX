@@ -2,3 +2,9 @@
     display: flex;
     width: 80%;
 }
+
+.input-img{
+    display: inline-block;
+    height: 9rem;
+    width: 9rem;
+}

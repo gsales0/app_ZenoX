@@ -25,37 +25,6 @@
     font-size: 1.5rem;
 }
 
-.link-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.img-link {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 1rem;
-}
-
-.link-list li a {
-    display: flex;
-    align-items: center;
-    padding: .75rem;
-    color: #2c3e50;
-    text-decoration: none;
-    font-size: 1.15rem;
-    font-weight: bold;
-    font-family: 'Trebuchet MS';
-    transition: all 0.2s ease;
-    
-}
-
-.link-list li a:hover{
-    background-color: #d3c1af;
-    color: black;
-    filter: invert(1);
-}
-
 .router-component{
     width: 80vw;
     height: 100vh;
@@ -79,4 +48,94 @@
 .nm_usuario{
     font-family: 'Calibri';
     font-size: .9rem;
+}
+
+:root {
+  --menu-bg-hover: #a0a0a0;        /* Cor de fundo ao passar o mouse (Cinza bem claro) */
+  --menu-text-color: #4b5675;      /* Cor do texto padrão */
+  --menu-text-hover: #252f4a;      /* Cor do texto ao focar */
+  --menu-primary-color: #009ef7;   /* A cor principal do seu ERP (Azul padrão) */
+  --menu-active-bg: #f1fafe;       /* Fundo da rota ativa */
+  --menu-border-tree: #e4e6ef;     /* Cor da linha de hierarquia das pastas */
+  --transition-speed: 0.2s;        /* Velocidade das animações */
+}
+
+.menu-links{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .5rem;
+    font-family: 'Roboto';
+}
+
+.folder-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.folder-header{
+    display: flex;
+    align-items: center;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    user-select: none;
+    color: var(--menu-text-color);
+}
+
+.folder-header:hover{
+    background-color: #a0a0a0;
+    color: var(--menu-text-hover);
+}
+
+.folder-icon {
+  font-size: 1.1rem;
+  width: 25px;
+  text-align: center;
+  margin-right: 10px;
+  color: inherit;
+}
+
+.folder-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.folder-itens{
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0rem;
+    padding-left: 1.5rem;
+
+    border-left: 1.5px dashed #252f4a;
+    margin-left: 1.5rem;
+}
+
+.folder-item{
+    display: flex;
+    align-items: center;
+    padding: .5rem 0em;
+
+    border-radius: .5rem;
+    text-decoration: none;
+    color: var(--menu-text-color);
+    transition: all .3s ease;
+}
+
+.folder-item:hover{
+    color: var(--menu-text-hover);
+    background-color: #a0a0a0;
+}
+
+.item-icon{
+    font-size: 0.85rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.item-label {
+  font-size: 0.9rem;
+  font-weight: 500;
 }

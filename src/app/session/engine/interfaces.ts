@@ -18,7 +18,7 @@ export interface columnsGrid {
 
 export interface dataForm{
     label: string,
-    type: "text"|"number"|"date"|"lookup"|"select"|"checkbox"|"textarea"|"subComponent"|"file",
+    type: "text"|"number"|"date"|"lookup"|"select"|"checkbox"|"textarea"|"subComponent"|"file"|"img",
     field: string,
     width: number,
 

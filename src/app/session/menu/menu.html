@@ -10,56 +10,32 @@
     </div>
 
     <div class="menu-links">
-        
-        <ul class="link-list">
-            <li>
-                <a routerLink="./dashboard" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Dashboard
+
+        <div class="folder-container" *ngFor="let f of menuEngine">
+
+            <div class="folder-header" (click)="openFolder(f)">
+                <i [class]="f.icon" class="folder-icon"></i>
+                <strong class="folder-label">{{ f.folder }}</strong>
+            </div>
+
+            <div class="folder-itens" *ngIf="f.open">
+                <a *ngFor="let i of f.itens"
+                [routerLink]="'./' + f.route + '/' + i.route"
+                class="folder-item"
+                routerLinkActive="active-link"
+                skipLocationChange
+                >
+                    <i [class]="i.icon" class="item-icon"></i>
+                    <span class="item-label">{{ i.label }}</span>
                 </a>
-            </li>
-            <li>
-                <a routerLink="./pessoas" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Pessoas
-                </a>
-            </li>
-            <li>
-                <a routerLink="./produtos" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Produtos
-                </a>
-            </li>
-            <li>
-                <a routerLink="./contratos" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Contratos
-                </a>
-            </li>
-            <li>
-                <a routerLink="./financeiro" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Financeiro
-                </a>
-            </li>
-            <li>
-                <a routerLink="./contas" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Contas
-                </a>
-            </li>
-            <li>
-                <a routerLink="./categorias" skipLocationChange>
-                    <img class="img-link" src="home.svg" alt="icon">
-                    Categorias
-                </a>
-            </li>
-            <li>
+            </div>
+        </div>
+
+        <li>
                 <button (click)="testarRelatorio()">
                     Listagem Teste
                 </button>
             </li>
-        </ul>
     </div>
 </section>
 

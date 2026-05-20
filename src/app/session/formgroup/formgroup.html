@@ -137,4 +137,22 @@
         <span *ngIf="dataRow[i.field]" [style.color]="'green'">Arquivo Anexado.</span>
     </ng-container>
 
+    <ng-container *ngSwitchCase="'img'" >
+        
+        <input
+        type="file"
+        [name]="i.field"
+        [id]="i.field"
+        [disabled]="dataConsult"
+        [required]="i.required||false"
+        [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
+
+        class="input-file"
+        accept="image/png, image/jpeg, image/webp"
+        (change)="inputImg($event)">
+
+            
+        
+    </ng-container>
+
 </ng-container>
