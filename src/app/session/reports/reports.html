@@ -1,0 +1,54 @@
+<section class="component">
+    <span class="title">
+        {{ title }}
+    </span>
+
+    <div class="header">
+        <label for="ID_RELATORIO">
+            Selecione o relatório
+        </label>
+
+        <select
+        name="ID_RELATORIO"
+        id="ID_RELATORIO"
+        [(ngModel)]="ID_RELATORIO"
+        (change)="updateReport()"
+        >
+            <option value="" hidden></option>
+            <option *ngFor="let i of dataReports" [value]="i.ID">{{ i.DS }}</option>
+        </select>
+
+        
+    </div>
+
+    <div class="filters" *ngIf="selectReport">
+
+        <div class="filter-input" *ngFor="let i of selectReport.filters">
+            <label [for]="i.field">
+                {{ i.label }}
+            </label>
+
+            <input
+            type="text"
+            [name]="i.field"
+            [id]="i.field"
+            [(ngModel)]="dataFilters[i.field]"
+            >
+        </div>
+    </div>
+
+    <div class="tools">
+        <button
+        class="crud"
+        (click)="emitReport()"
+        >
+            Emitir
+        </button>
+
+        <button
+        class="crud"
+        >
+            Limpar
+        </button>
+    </div>
+</section>

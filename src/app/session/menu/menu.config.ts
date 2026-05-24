@@ -4,6 +4,7 @@ import { Contratos } from "../../cadastro/contratos";
 import { Pessoas } from "../../cadastro/pessoas";
 import { Produtos } from "../../cadastro/produtos";
 import { Financeiro } from "../../movimento/financeiro";
+import { Listagens } from "../../relatorios/listagens";
 import { Entidade } from "../../seguranca/entidade/entidade";
 
 
@@ -36,7 +37,7 @@ export const menuEngine: menuEngine[] = [
         open: false,
         route: "relatorios",
         itens: [
-
+            { label: "Listagens", route: 'listagens', icon: "fa-solid fa-file-lines", component: Listagens}
         ]
     },
     {

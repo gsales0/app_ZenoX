@@ -32,18 +32,4 @@ export class Menu implements OnInit{
 
     folder.open = !folder.open
   }
-
-  async testarRelatorio(){
-    let data = await this.reports.listagem()
-
-    const byteCharacters = atob(data.file.split(',')[1]);
-
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-
-    const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/pdf" });
-    window.open(URL.createObjectURL(blob), '_blank')
-  }
 }

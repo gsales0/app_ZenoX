@@ -10,15 +10,15 @@ export class ReportsService {
     constructor(private session: Session){ }
   
 
-  async listagem(){
+  async reportEmit(type: string, table: string, fields: any){
 
-    let req = await fetch(environment.api + 'reports/listagem', {
+    let req = await fetch(environment.api + `reports/${type}/${table}`, {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
         "X_SESSION": this.session.X_SESSION
       },
-      body: JSON.stringify({})
+      body: JSON.stringify(fields)
     })
 
     let data = await req.json()
