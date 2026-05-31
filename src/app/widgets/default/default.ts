@@ -33,7 +33,5 @@ export class Default implements OnInit {
     this.totalValue = this.dataGrid.reduce((a, i) => {
       return a + (Number(i[this.totalizar]) || 0)
     }, 0)
-    
-    console.log(this.totalValue)
   }
 }

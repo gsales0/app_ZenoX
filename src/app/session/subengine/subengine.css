@@ -1,0 +1,119 @@
+
+/* ================================================== */
+/*                ESTILO DO COMPONENTE                */
+/* ================================================== */
+
+.subContainer{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #2c3e50;
+}
+
+/* ================================================== */
+/*                 TELA DA TABELA GRID                */
+/* ================================================== */
+
+.tableContainer{
+    max-height: calc(100% - 2.75rem);
+    overflow-y: auto;
+}
+
+.tableContainer::-webkit-scrollbar {
+    width: 6px;
+}
+.tableContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+    border-radius: 4px;
+}
+
+.dataGrid{
+    border-collapse: collapse;
+    font-size: .8rem;
+    user-select: none;
+
+    & td, th{
+        border-bottom: 1px solid #2c3e50;
+        text-align: left;
+        padding: .15rem;
+    }
+
+    & tr:nth-child(even), thead tr{
+        background-color: #dedede;
+    }
+}
+
+.selected{
+    background-color: #116191 !important;
+    color: white;
+}
+
+/* ================================================== */
+/*                 TELA DO REGISTRO                   */
+/* ================================================== */
+
+
+.subForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-group{
+    padding: .25rem;
+
+    & label{
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+/* ================================================== */
+/*                  BARRA DE FERRAMENTAS              */
+/* ================================================== */
+
+.comp-tools{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+
+    padding: .5rem;
+}
+
+.tools{
+    position: absolute;
+    bottom: 0;
+    height: 2.75rem;
+
+    width: 100%;
+    border-top: 1px solid #2c3e50;
+}
+
+.btn-crud{
+    width: 6rem;
+    height: 1.25rem;
+    margin: .25rem;
+
+    color: white;
+    font-weight: bold;
+    font-size: .8rem;
+
+    opacity: .85;
+    transition: all .3s ease;
+
+    border: none;
+    border-radius: .25rem;
+    background-color: #116191;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, .5);
+}
+
+.btn-crud:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btn-crud:disabled{
+    opacity: .5;
+    background-color: lightgray;
+    color: #2c3e50;
+    cursor: inherit;
+}

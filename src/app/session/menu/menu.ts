@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Menu implements OnInit{
 
+  VERSION: string = ''
   NM_ENTIDADE: string = ''
   NM_USUARIO: string = ''
   ID_ANO: Number = 0
@@ -23,6 +24,7 @@ export class Menu implements OnInit{
     this.NM_ENTIDADE = this.session.NM_ENTIDADE
     this.NM_USUARIO = this.session.NM_USUARIO
     this.ID_ANO = this.session.ID_ANO
+    this.VERSION = this.session.VERSION
   }
 
   menuEngine = menuEngine

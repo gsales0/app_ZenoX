@@ -5,66 +5,73 @@
         </span>
     </div>
 
-    <div class="tools" *ngIf="!dataScreen || dataConsult">
+    <div class="comp-tools" *ngIf="!dataScreen || dataConsult">
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnIncluir()"
         >
+            <i class="fa-solid fa-square-plus"></i>
             Incluir
         </button>
         
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnAlterar()"
         [disabled]="!dataRow[dataKey]"
         >
+            <i class="fa-solid fa-square-pen"></i>
             Alterar
         </button>
 
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnExcluir()"
         [disabled]="!dataRow[dataKey]"
         >
+            <i class="fa-solid fa-square-minus"></i>
             Excluir
         </button>
 
         <button
-        class="crud"
+        class="btn-crud"
         (click)="dataConsult ? btnCancelar() : btnConsultar()"
         [disabled]="!dataRow[dataKey]"
         >
+            <i class="fa-solid fa-square-caret-down"></i>
             {{ dataConsult ? "Voltar" : "Consultar"}}
         </button>
     </div>
 
-    <div class="tools" *ngIf="dataScreen && !dataConsult">
+    <div class="comp-tools" *ngIf="dataScreen && !dataConsult">
+
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnSalvar()"
         [disabled]="ngdataForm?.invalid"
 
         >
+            <i class="fa-solid fa-floppy-disk"></i>
             {{ dataUpdate ? "Alterar" : "Salvar"}}
         </button>
 
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnCancelar()"
         >
+            <i class="fa-solid fa-delete-left"></i>
             Cancelar
         </button>
     </div>
 
-    <div class="search-box" *ngIf="!dataScreen">
+    <div class="comp-search" *ngIf="!dataScreen">
 
-        <div class="search">
+        <div class="input-search">
             <label for="DS_PESQUISA">
                 Pesquisa:
             </label>
             
             <input
-            type="text"
+            type="search"
             name="DS_PESQUISA"
             id="DS_PESQUISA"
             [(ngModel)]="dataSearch.DS_PESQUISA"
@@ -72,11 +79,18 @@
         </div>
 
         <button
-        class="crud"
+        class="btn-crud"
         (click)="btnBuscar()"
         >
             Buscar
         </button>
+
+        <button
+        class="btn-crud"
+        >
+            Filtrar
+        </button>
+    
     </div>
 
     <div class="container" *ngIf="!dataScreen">

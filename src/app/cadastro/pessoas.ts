@@ -101,7 +101,7 @@ export class Pessoas {
       label: "Histórico",
       type: "textarea",
       field: "HISTORICO",
-      width: 75,
+      width: 70,
       height: 4,
     }
   ]

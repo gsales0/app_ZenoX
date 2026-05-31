@@ -110,7 +110,6 @@ export class Categorias {
       type: "textarea",
       field: "HISTORICO",
       width: 70,
-      height: 4
     },
     {
       label: "Detalhamento",

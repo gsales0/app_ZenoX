@@ -1,0 +1,126 @@
+
+/* ================================================== */
+/*                TÍTULO DO COMPONENTE                */
+/* ================================================== */
+
+.comp-header{
+    padding: .5rem;
+    font-size: larger;
+    font-weight: bold;
+    border-bottom: 1px solid #2c3e50;
+}
+
+/* ================================================== */
+/*                  BARRA DE FERRAMENTAS              */
+/* ================================================== */
+
+.comp-tools{
+    display: flex;
+    padding: .5rem;
+}
+
+.btn-crud{
+    width: 8rem;
+    height: 2rem;
+    margin: .25rem;
+
+    color: white;
+    font-weight: bold;
+    font-size: .95rem;
+
+    opacity: .85;
+    transition: all .3s ease;
+
+    border: none;
+    border-radius: .25rem;
+    background-color: #116191;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, .5);
+}
+
+.btn-crud:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btn-crud:disabled{
+    opacity: .5;
+    background-color: lightgray;
+    color: #2c3e50;
+    cursor: inherit;
+}
+
+/* ================================================== */
+/*                  BARRA DE PESQUISA                 */
+/* ================================================== */
+
+.comp-search{
+    display: flex;
+    padding: .5rem;
+    align-items: baseline;
+}
+
+.input-search{
+    display: flex;
+    width: 34rem;
+    font-size: .9rem;
+    
+    & input{
+        width: 100%;
+        margin: 0rem .25rem;
+        box-sizing: border-box;
+
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #2c3e50;
+
+        transition: all .3s ease;
+    }
+
+    & input:focus{
+        border-bottom: 1px solid #116191;
+        box-shadow: 0px 1px 0px 0px #116191;
+    }
+}
+
+/* ================================================== */
+/*                 TABELA PRINCIPAL                   */
+/* ================================================== */
+
+.dataGrid{
+    border-collapse: collapse;
+    font-size: .9rem;
+    user-select: none;
+
+    & td, th{
+        border-bottom: 1px solid #2c3e50;
+        text-align: left;
+        padding: .25rem;
+    }
+
+    & tr:nth-child(even), thead tr{
+        background-color: #dedede;
+    }
+}
+
+.selected{
+    background-color: #116191 !important;
+    color: white;
+}
+
+/* ================================================== */
+/*                 TELA DO REGISTRO                   */
+/* ================================================== */
+
+.dataForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-group{
+    padding: .25rem;
+
+    & label{
+        display: inline-block;
+        width: 100%;
+    }
+}

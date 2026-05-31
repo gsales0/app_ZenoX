@@ -102,7 +102,7 @@ export class Financeiro {
       label: "Categoria",
       type: "lookup",
       field: "ID_CATEGORIA",
-      width: 14,
+      width: 12,
       lookup: { 
         table: "CATEGORIA_DETALHE",
         ID: "ID_CATEGORIA_DETALHE",
@@ -155,7 +155,7 @@ export class Financeiro {
       label: "Conta Bancária",
       type: "lookup",
       field: "ID_CONTA",
-      width: 14,
+      width: 12,
       lookup: { "table": "CONTAS", ID: "ID_CONTA", DS: ["CD_CONTA", "DG_CONTA"]}
     },
     {
@@ -169,14 +169,14 @@ export class Financeiro {
       label: "Documentos Comprobatórios",
       type: "subComponent",
       field: "FINANCEIRO_DOCUMENTOS",
-      width: 37.15,
+      width: 35,
       height: 15 
     },
     {
       label: "Histórico",
       type: "textarea",
       field: "HISTORICO",
-      width: 37.15,
+      width: 35,
       height: 15
     }
   ]

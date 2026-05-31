@@ -15,6 +15,7 @@
     width: 20%;
     padding: .5rem;
     background-color: white;
+    box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.5);
 }
 
 .router-component{

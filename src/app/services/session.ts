@@ -9,6 +9,7 @@ export class Session {
   NM_ENTIDADE: string = ''
   NM_USUARIO: string = ''
   X_SESSION: string = ''
+  VERSION: string = '1.0.00'
 
   ID_ANO: number = 0
 

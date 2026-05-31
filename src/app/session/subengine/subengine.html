@@ -1,61 +1,65 @@
 <div class="subContainer" *ngIf="!subScreen">
-    <table class="dataGrid">
-        <thead>
-            <tr>
-                <th *ngFor="let i of subColumns" [style.width.rem]="i.width">
-                    {{i.name}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr
-            *ngFor="let i of subGrid" id="i.ID"
-            (click)="dataSub.ID = i.ID"
-            (dblclick)="btnConsultar()"
-            [ngClass]="{'selected' : dataSub.ID === i.ID}"
-            >
-                <td *ngFor="let c of subColumns" [ngSwitch]="c.type">
-                    
-                    <ng-container *ngSwitchCase="'date'">
-                        {{ i[c.field] | date:'dd/MM/yyyy' }}
-                    </ng-container>
-
-                    <ng-container *ngSwitchCase="'sn_ativo'">
-                            {{ i[c.field] == 1 ? "Sim" : "Não" }}
+    <div class="tableContainer">
+        <table class="dataGrid">
+            <thead>
+                <tr>
+                    <th *ngFor="let i of subColumns" [style.width.rem]="i.width">
+                        {{i.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                *ngFor="let i of subGrid" id="i.ID"
+                (click)="dataSub.ID = i.ID"
+                (dblclick)="btnConsultar()"
+                [ngClass]="{'selected' : dataSub.ID === i.ID}"
+                >
+                    <td *ngFor="let c of subColumns" [ngSwitch]="c.type">
+                        
+                        <ng-container *ngSwitchCase="'date'">
+                            {{ i[c.field] | date:'dd/MM/yyyy' }}
                         </ng-container>
+    
+                        <ng-container *ngSwitchCase="'sn_ativo'">
+                                {{ i[c.field] == 1 ? "Sim" : "Não" }}
+                            </ng-container>
+    
+                        <ng-container *ngSwitchDefault>
+                            {{i[c.field]}}
+                        </ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-                    <ng-container *ngSwitchDefault>
-                        {{i[c.field]}}
-                    </ng-container>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="subTools">
-        <button
-        class="subCrud"
-        (click)="btnIncluir()"
-        [disabled]="subConsult"
-        >
-            Incluir
-        </button>
-
-        <button
-        class="subCrud"
-        (click)="btnAlterar()"
-        [disabled]="!dataSub.ID || subConsult"
-        >
-            Alterar
-        </button>
-
-        <button
-        class="subCrud"
-        (click)="btnExcluir()"
-        [disabled]="!dataSub.ID || subConsult"
-        >
-            Excluir
-        </button>
+    <div class="tools">
+        <div class="comp-tools">
+            <button
+            class="btn-crud"
+            (click)="btnIncluir()"
+            [disabled]="subConsult"
+            >
+                Incluir
+            </button>
+    
+            <button
+            class="btn-crud"
+            (click)="btnAlterar()"
+            [disabled]="!dataSub.ID || subConsult"
+            >
+                Alterar
+            </button>
+    
+            <button
+            class="btn-crud"
+            (click)="btnExcluir()"
+            [disabled]="!dataSub.ID || subConsult"
+            >
+                Excluir
+            </button>
+        </div>
     </div>
 </div>
 
@@ -83,20 +87,22 @@
         </div>
     </div>
     
-    <div class="subTools">
-        <button
-        class="subCrud"
-        (click)="subUpdate ? btnAlteracao() : btnSalvar()"
-        [disabled]="subConsult"
-        >
-            {{ subUpdate ? "Alterar" : "Salvar" }}
-        </button>
-
-        <button
-        class="subCrud"
-        (click)="btnCancelar()"
-        >
-            {{subConsult ? "Voltar" : "Cancelar"}}
-        </button>
+    <div class="tools">
+        <div class="comp-tools">
+            <button
+            class="btn-crud"
+            (click)="subUpdate ? btnAlteracao() : btnSalvar()"
+            [disabled]="subConsult"
+            >
+                {{ subUpdate ? "Alterar" : "Salvar" }}
+            </button>
+    
+            <button
+            class="btn-crud"
+            (click)="btnCancelar()"
+            >
+                {{subConsult ? "Voltar" : "Cancelar"}}
+            </button>
+        </div>
     </div>
 </div>
