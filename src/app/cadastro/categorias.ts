@@ -177,7 +177,7 @@ export class Categorias {
         {
           name: "Data",
           field: "DT_INICIO",
-          width: 6,
+          width: 10,
           type: "date"
         },
         {

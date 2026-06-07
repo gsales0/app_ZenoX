@@ -15,7 +15,15 @@
                 (dblclick)="btnConsultar()"
                 [ngClass]="{'selected' : dataSub.ID === i.ID}"
                 >
-                    <td *ngFor="let c of subColumns" [ngSwitch]="c.type">
+                    <td
+                    *ngFor="let c of subColumns"
+                    [ngSwitch]="c.type"
+                    [style.text-align]="c.type === 'currency' ? 'right' : 'left'"
+                    >
+
+                        <ng-container *ngSwitchCase="'lookup'">
+                            {{ gridLookup(i[c.field], c.table || '') }}
+                        </ng-container>
                         
                         <ng-container *ngSwitchCase="'date'">
                             {{ i[c.field] | date:'dd/MM/yyyy' }}
@@ -23,7 +31,11 @@
     
                         <ng-container *ngSwitchCase="'sn_ativo'">
                                 {{ i[c.field] == 1 ? "Sim" : "Não" }}
-                            </ng-container>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'currency'">
+                            {{ i[c.field] | number:'1.2-2':'pt-BR' }}
+                        </ng-container>
     
                         <ng-container *ngSwitchDefault>
                             {{i[c.field]}}
@@ -80,8 +92,10 @@
             [dataRow]="dataSub" 
             [dataConsult]="subConsult"
             [dataLookups]="subLookups"
+            (onReadonlyFocus)="calcInput()"
+            (onAutocomplete)="autocomplete($event)"
             (onLookupFocus)="lookup($event)"
-            (onConsultFile)="consultFile()">
+            (onConsultFile)="consultFile()"
             ></app-formgroup>
 
         </div>

@@ -109,7 +109,11 @@
                 (click)="dataRow[dataKey] = item[dataKey]"
                 [ngClass]="{'selected' : dataRow[dataKey] === item[dataKey]}"
                 >
-                    <td *ngFor="let c of columnsGrid" [ngSwitch]="c.type">
+                    <td
+                    *ngFor="let c of columnsGrid"
+                    [ngSwitch]="c.type"
+                    [style.text-align]="c.type === 'currency' ? 'right' : 'left'"
+                    >
 
                         <ng-container *ngSwitchCase="'lookup'">
                             {{ gridLookup(item[c.field], c.table || '') }}
@@ -125,6 +129,10 @@
                     
                         <ng-container *ngSwitchCase="'date'">
                             {{ item[c.field] | date:'dd/MM/yyyy' }}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'currency'">
+                            {{ item[c.field] | number:'1.2-2':'pt-BR' }}
                         </ng-container>
 
                         <ng-container *ngSwitchDefault>
@@ -149,7 +157,7 @@
                     
                     <app-formgroup
                     [i]="i" 
-                    [dataRow]="dataRow" 
+                    [dataRow]="dataRow"
                     [dataConsult]="dataConsult"
                     [dataLookups]="dataLookups"
                     (onLookupFocus)="lookup($event)"
@@ -165,6 +173,7 @@
                         [subForm]="subComponent[i.field].subForm"
                         [subColumns]="subComponent[i.field].subColumns"                        
                         [(subGrid)]="subGrids[i.field]"
+                        (subGridChange)="calcInput()"
                         [supKey]="dataKey"
                         [subKey]="subComponent[i.field].subKey"
                         >

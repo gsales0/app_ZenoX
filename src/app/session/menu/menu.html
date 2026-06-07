@@ -13,7 +13,7 @@
 
         <div class="menu-routes">
             <a class="folder-header" routerLink="./dashboard" skipLocationChange>
-                <i class="fa-solid fa-chart-column folder-icon folder-item"></i>
+                <i class="fa-solid fa-chart-column folder-icon"></i>
                 <strong class="folder-label">Dashboard</strong>
             </a>
 
@@ -49,7 +49,7 @@
                 <br>
 
                 <span class="router-usuario">
-                    Usuário: {{ NM_USUARIO }} | Exercício: {{ ID_ANO }} | Versão: {{ VERSION }}
+                    Usuário: {{ NM_USUARIO }} | Competência: {{ meses[ID_MES] }}/{{ ID_ANO }} | Versão: {{ VERSION }}
                 </span>
             </div>
         </div>

@@ -19,6 +19,7 @@ export class Formgroup {
   @Output() onLookupFocus = new EventEmitter<any>()
   @Output() onAutocomplete = new EventEmitter<any>()
   @Output() onConsultFile = new EventEmitter<any>()
+  @Output() onReadonlyFocus = new EventEmitter<any>()
 
   lookup() {
     if (this.i.lookup) {
@@ -26,8 +27,14 @@ export class Formgroup {
     }
   }
 
+  readonlyFocus(){
+    if(this.i.readonly){
+      this.onReadonlyFocus.emit()
+    }
+  }
+
   autocomplete(ID: any){
-    if(this.i.autocomplete.type == 'change' && ID){
+    if(this.i.autocomplete && this.i.autocomplete.type == 'change' && ID){
 
       let data = {
         ID: ID,

@@ -8,6 +8,7 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
+        [readonly]="i.readonly||false"
         [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
 
         *ngIf="i.mask"
@@ -22,6 +23,7 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
+        [readonly]="i.readonly||false"
         [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
         *ngIf="!i.mask"
         >
@@ -35,6 +37,8 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
+        (focus)="readonlyFocus()"
+        [readonly]="i.readonly||false"
         [style.text-align]="'right'"
         [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
         >
@@ -48,6 +52,7 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
+        [readonly]="i.readonly||false"
         [ngClass]="{'required': i.required && dataRow[i.field] === ''}"
         >
     </ng-container>
@@ -59,7 +64,7 @@
         [(ngModel)]="dataRow[i.field]"
         [disabled]="dataConsult"
         [required]="i.required||false"
-        
+
         (focus)="lookup()"
         (ngModelChange)="autocomplete($event)"
 

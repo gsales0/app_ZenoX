@@ -11,7 +11,7 @@ export interface columnsGrid {
     field: string,
     width: number,
 
-    type?: "date"|"sn_ativo"|"select"|"lookup",
+    type?: "date"|"sn_ativo"|"select"|"lookup"|"currency",
     options?: {[ID: string]: string},
     table?: string
 }
@@ -24,6 +24,9 @@ export interface dataForm{
 
     height?: number,
     required?: boolean,
+    readonly?: boolean,
+    expression?: string,
+
     options?: {ID: string, DS: string}[],
     lookup?: {table: string, ID: string, DS: string[], joins?: string[], where?: string},
     autocomplete?: {type: "codigo"|"change"|"today", fill?: string[]},

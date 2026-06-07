@@ -61,6 +61,7 @@ export class Engine implements OnInit {
   async btnIncluir(){
     this.dataRow = { ...this.dataClean }
 
+
     for(let i of this.dataForm){
       if(i.autocomplete?.type == 'codigo'){
         let data = await this.service.codigo(this.table, i.field)
@@ -139,6 +140,7 @@ export class Engine implements OnInit {
       this.subGrids[i].forEach((x: any, n: number) => x.ID = n +1 )
     })
 
+    this.calcInput()
     this.dataScreen = true
     this.dataConsult = true
     this.cdr.detectChanges()
@@ -160,6 +162,7 @@ export class Engine implements OnInit {
       this.subGrids[i].forEach((x: any, n: number) => x.ID = n +1 )
     })
 
+    this.calcInput()
     this.dataConsult = false
     this.dataUpdate = true
     this.dataScreen = true
@@ -206,5 +209,25 @@ export class Engine implements OnInit {
 
     const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/pdf" });
     window.open(URL.createObjectURL(blob), '_blank')
+  }
+
+  calcInput(){
+    for(let i of this.dataForm){
+      if(i.expression){
+        if(i.expression.includes('SUM(')){
+          let match = i.expression.match(/SUM\((.*?)\)/) || []
+          let data = match[1].split('.')
+          
+          let value = 0
+          if(this.subGrids[data[0]]){
+            for(let x of this.subGrids[data[0]]){
+              value = value + (Number(x[data[1]]) || 0)
+            }
+          }
+
+          this.dataRow[i.field] = value
+        }
+      }
+    }
   }
 }

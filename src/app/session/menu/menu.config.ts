@@ -3,7 +3,9 @@ import { Contas } from "../../cadastro/contas";
 import { Contratos } from "../../cadastro/contratos";
 import { Pessoas } from "../../cadastro/pessoas";
 import { Produtos } from "../../cadastro/produtos";
+import { Estoque } from "../../movimento/estoque";
 import { Financeiro } from "../../movimento/financeiro";
+import { Movimentacao } from "../../movimento/movimentacao";
 import { Listagens } from "../../relatorios/listagens";
 import { Entidade } from "../../seguranca/entidade/entidade";
 
@@ -28,7 +30,9 @@ export const menuEngine: menuEngine[] = [
         open: false,
         route: "movimentacao",
         itens: [
-            { label: "Financeiro", route: "financeiro", icon: "fa-solid fa-calculator", component: Financeiro }
+            { label: "Financeiro", route: "financeiro", icon: "fa-solid fa-calculator", component: Financeiro },
+            { label: "Estoque", route: "estoque", icon: "fa-solid fa-boxes-stacked", component: Estoque },
+            { label: "Ordem de Serviço / Vendas", route: "movimentacao", icon: "fa-solid fa-gears", component: Movimentacao }
         ]
     },
     {

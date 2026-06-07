@@ -33,15 +33,21 @@ export class Subengine implements OnInit{
 
   constructor(private cdr: ChangeDetectorRef, private service: EngineService){ }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.subClean = { ...this.dataSub }
+
+    for(let i of this.subForm){
+      if(i.type == 'lookup'){
+        await this.lookup(i.lookup)
+      }
+    }
   }
 
   async btnIncluir(){
     this.dataSub = { ...this.subClean, ...{ ID: this.dataSub.ID }}
 
     for(let i of this.subForm){
-      if(i.autocomplete?.type == 'codigo'){
+      if(i.autocomplete && i.autocomplete?.type == 'codigo'){
         if(!this.subGrid || !this.subGrid.length){
           this.dataSub[i.field] = 1  
         }
@@ -93,6 +99,7 @@ export class Subengine implements OnInit{
   }
 
   btnSalvar(){
+    this.calcInput()
     this.dataSub.ID = this.subGrid ? this.subGrid.length  + 1 : 1
     this.subGrid = this.subGrid ? [ ...this.subGrid, ...[this.dataSub] ] : [this.dataSub]
     this.subGridChange.emit(this.subGrid)
@@ -125,5 +132,26 @@ export class Subengine implements OnInit{
 
     const blob = new Blob([new Uint8Array(byteNumbers)], { type: "application/pdf" });
     window.open(URL.createObjectURL(blob), '_blank')
+  }
+
+  calcInput(){
+    for(let i of this.subForm){
+      if(i.expression){
+        let func = new Function('dataSub', 'return ' + i.expression)
+        this.dataSub[i.field] = func(this.dataSub)
+      }
+    }
+  }
+
+  async autocomplete(load: any){
+
+    let teste = 'dataCalc' 
+    let data = await this.service.autocomplete(load)
+    this.dataSub = { ...this.dataSub, ...data }
+    this.cdr.detectChanges()
+  }
+
+  gridLookup(ID: number, table: string){
+    return this.subLookups[table]?.find((i: any) => i.ID == ID).DS
   }
 }

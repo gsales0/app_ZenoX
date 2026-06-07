@@ -12,6 +12,7 @@ export class Session {
   VERSION: string = '1.0.00'
 
   ID_ANO: number = 0
+  ID_MES: number = 0
 
   async buscarEntidade(alias: string){
 
@@ -43,6 +44,7 @@ export class Session {
       this.X_SESSION = data.session
       this.NM_USUARIO = data.NM_USUARIO
       this.ID_ANO = dataRow.ID_ANO
+      this.ID_MES = dataRow.ID_MES
     }
 
     return data
